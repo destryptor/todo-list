@@ -1,13 +1,17 @@
-import Link from "next/link";
-import Layout from "../components/Layout";
+import Link from 'next/link';
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">About</Link>
-    </p>
-  </Layout>
-);
+const Home = () => {
+	return (
+		<div>
+			<h1>Welcome to the Todo App</h1>
+			<p>This is a simple Todo application using MongoDB, Next.js, React, and Node.js.</p>
+			<p>
+				<Link href='/dashboard'>
+                    Go to Dashboard
+				</Link>
+			</p>
+		</div>
+	);
+};
 
-export default IndexPage;
+export default Home;
