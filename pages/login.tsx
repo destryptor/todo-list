@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
+import styles from '@/styles/Login.module.css';
+
 const LoginPage = () => {
 	const router = useRouter();
 	const [loginState, setLoginState] = useState(false);
@@ -14,6 +16,7 @@ const LoginPage = () => {
 		email: '',
 	});
 	const [incorrectLogin, setIncorrectLogin] = useState(false);
+	const [incorrectSignup, setIncorrectSignup] = useState(false);
 
 	const handleLoginState = () => {
 		setLoginState(true);
@@ -59,66 +62,81 @@ const LoginPage = () => {
 
 		if (result?.ok) {
 			router.push('/dashboard');
+		} else {
+			setIncorrectSignup(true);
 		}
 	};
 
 	return (
-		<div>
-			<h1>Login</h1>
+		<>
 			{!loginState && !signupState ? (
-				<>
-					<button onClick={handleLoginState}>Log in</button>
-					<button onClick={handleSignupState}>Sign up</button>
-				</>
+				<div className={styles.container}>
+					<h1>Login</h1>
+					<div className={styles.buttoncontainer}>
+						<button className={styles.button} onClick={handleLoginState}>
+							Log in
+						</button>
+						<button className={styles.button} onClick={handleSignupState}>
+							Sign up
+						</button>
+					</div>
+				</div>
 			) : null}
 
 			{loginState ? (
-				<div>
-					<form>
-						<label>
-							Username:
-							<input type='text' value={loginData.username} onChange={(e) => setLoginData({ ...loginData, username: e.target.value })} />
-						</label>
-						<label>
-							Password:
-							<input type='password' value={loginData.password} onChange={(e) => setLoginData({ ...loginData, password: e.target.value })} />
-						</label>
-						<button type='button' onClick={handleLogin}>
-							Log in
-						</button>
-						<button type='button' onClick={handleSignupInstead}>
-							Sign up instead
-						</button>
-					</form>
-					<span style={{ color: 'red' }}>{incorrectLogin && 'Incorrect Username or Password'}</span>
+				<div className={styles.container}>
+					<h1>Login</h1>
+					<div className={`${styles.formcontainer} ${styles.form}`}>
+						<form className={styles.form}>
+							<label className={styles.inputlabel}>
+								Username:
+								<input type='text' value={loginData.username} placeholder='Username' onChange={(e) => setLoginData({ ...loginData, username: e.target.value })} />
+							</label>
+							<label className={styles.inputlabel}>
+								Password:
+								<input type='password' value={loginData.password} placeholder='Password' onChange={(e) => setLoginData({ ...loginData, password: e.target.value })} />
+							</label>
+							<button type='button' className={styles.button} onClick={handleLogin}>
+								Log in
+							</button>
+							<button type='button' className={styles.instead} onClick={handleSignupInstead}>
+								Sign up instead
+							</button>
+						</form>
+						<span className={styles.errormessage}>{incorrectLogin && 'Incorrect Username or Password'}</span>
+					</div>
 				</div>
 			) : null}
 
 			{signupState ? (
-				<div>
-					<form>
-						<label>
-							Username:
-							<input type='text' value={signupData.username} onChange={(e) => setSignupData({ ...signupData, username: e.target.value })} />
-						</label>
-						<label>
-							Password:
-							<input type='password' value={signupData.password} onChange={(e) => setSignupData({ ...signupData, password: e.target.value })} />
-						</label>
-						<label>
-							Confirm Password:
-							<input type='password' value={signupData.confirmPassword} onChange={(e) => setSignupData({ ...signupData, confirmPassword: e.target.value })} />
-						</label>
-						<button type='button' onClick={handleSignup}>
-							Sign up
-						</button>
-						<button type='button' onClick={handleLoginInstead}>
-							Log in instead
-						</button>
-					</form>
+				<div className={styles.container}>
+					<h1>Login</h1>
+					<div className={`${styles.formcontainer} ${styles.form}`}>
+						<form className={styles.form}>
+							<label className={styles.inputlabel}>
+								Username:
+								<input type='text' value={signupData.username} placeholder='Username' onChange={(e) => setSignupData({ ...signupData, username: e.target.value })} />
+							</label>
+							<label className={styles.inputlabel}>
+								Password:
+								<input type='password' value={signupData.password} placeholder='Password' onChange={(e) => setSignupData({ ...signupData, password: e.target.value })} />
+							</label>
+							<label className={styles.inputlabel}>
+								Confirm Password:
+								<input type='password' value={signupData.confirmPassword} placeholder='Confirm Password' onChange={(e) => setSignupData({ ...signupData, confirmPassword: e.target.value })} />
+							</label>
+							<button type='button' className={styles.button} onClick={handleSignup}>
+								Sign up
+							</button>
+							<button type='button' className={styles.instead} onClick={handleLoginInstead}>
+								Log in instead
+							</button>
+							<span className={styles.errormessage}>{incorrectSignup && 'Please fill all the details'}</span>
+						</form>
+					</div>
 				</div>
 			) : null}
-		</div>
+		</>
 	);
 };
 

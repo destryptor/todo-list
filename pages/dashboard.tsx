@@ -2,7 +2,8 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import TaskModel, { ITask } from '@/models/Task';
 import TaskList from '@/components/TaskList';
-import AddTask from '@/components/AddTask';
+
+import styles from '@/styles/Dashboard.module.css';
 
 const Dashboard = () => {
 	const { data: session } = useSession();
@@ -72,20 +73,28 @@ const Dashboard = () => {
 	};
 
 	return (
-		<div>
+		<>
 			{session ? (
 				<>
-					<p>Welcome, {session.user.name}!</p>
-					<button onClick={() => signOut()}>Sign out</button>
+					<div className={styles.topbar}>
+						<p>Welcome, {session.user.name.charAt(0).toUpperCase() + session.user.name.slice(1)}!</p>
+						<button onClick={() => signOut()}>Sign out</button>
+					</div>
 					<TaskList tasks={tasks} onRemoveTask={handleRemoveTask} addTask={handleAddTask} />
 				</>
 			) : (
 				<>
-					<p>Please sign in to view your tasks.</p>
-					<button onClick={() => signIn()}>Sign in</button>
+					<div className={styles.container}>
+						<div className={styles.msg}>
+							<p style={{ fontSize: '30px' }}>Please sign in to view your tasks.</p>
+						</div>
+						<button className={styles.button} onClick={() => signIn()}>
+							Sign in
+						</button>
+					</div>
 				</>
 			)}
-		</div>
+		</>
 	);
 };
 

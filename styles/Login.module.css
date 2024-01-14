@@ -1,0 +1,84 @@
+.container {
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	opacity: 0;
+	animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.container h1 {
+	color: #ca10c1;
+}
+
+.formcontainer {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.inputlabel {
+	margin-bottom: 8px;
+}
+
+.inputfield {
+	width: 100%;
+	padding: 8px;
+	margin-bottom: 16px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+.buttoncontainer {
+	display: flex;
+	gap: 10px;
+}
+
+.button {
+	padding: 10px 15px;
+	margin: 10px;
+}
+
+.instead {
+	background-color: #0f0f0f;
+	padding: 10px 15px;
+	margin: 10px;
+}
+
+.instead:hover {
+	background-color: #0f0f0f;
+	color: #ca10c1;
+}
+
+.errormessage {
+	color: red;
+	margin-top: 10px;
+}
+
+.transitionfade {
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+}
+
+.transitionfade.active {
+	opacity: 1;
+}

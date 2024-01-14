@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Rubik&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'IBM Plex Sans';
+}
+
+body {
+    background-color: #0f0f0f;
+    color: #ffffff;
+}
+  
+button {
+    font-weight: bold;
+    background-color: #aa12b8;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button a{
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+button:hover{
+    background-color: #7e0e88;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+}
