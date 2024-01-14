@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const MONGO_URL = process.env.MONGO_URL;
+const MONGO_URL = process.env.MONGODB_URI;
 if (!MONGO_URL) {
 	throw new Error('Invalid URI');
 }
