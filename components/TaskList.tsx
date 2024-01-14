@@ -16,23 +16,25 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, onRemoveTask, addTask }) => 
 		<AddTask handleAddTask={addTask} />
 		<div className={styles.container}>
 			<h2>Task List</h2>
-			<table className={styles.customtable}>
-				<thead>
-					<tr>
-						<th></th>
-						<th>Task</th>
-						<th>Time</th>
-						<th>Date</th>
-						<th>Status</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					{tasks.map((task, index) => (
-						<Task key={task._id} task={task} onRemoveTask={onRemoveTask} />
-					))}
-				</tbody>
-			</table>
+			<div className={styles.tablecontainer}>
+				<table className={styles.customtable}>
+					<thead>
+						<tr>
+							<th></th>
+							<th>Task</th>
+							<th>Time</th>
+							<th>Date</th>
+							<th>Status</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						{tasks.map((task, index) => (
+							<Task key={task._id} task={task} onRemoveTask={onRemoveTask} />
+						))}
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</>
 );
