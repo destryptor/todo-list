@@ -47,7 +47,6 @@ const Dashboard = () => {
 				const createdTask = await response.json();
 				setTasks([...tasks, createdTask]);
 			} else {
-				// Handle error
 				console.error('Failed to create task');
 			}
 		}

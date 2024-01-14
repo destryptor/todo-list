@@ -61,6 +61,9 @@ const AddTask: React.FC<AddTaskProps> = ({ handleAddTask }) => {
 					</div>
 				)}
 			</div>
+			<div className={styles.note}>
+				<p>Note: If no deadline is provided, the deadline will be set to EOD.</p>
+			</div>
 		</>
 	);
 };

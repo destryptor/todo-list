@@ -41,6 +41,7 @@
 .customtable {
 	border-collapse: collapse;
 	text-align: center;
+	width: 100%;
 }
 
 .customtable th,
@@ -52,4 +53,11 @@
 .customtable th {
 	background-color: #800080;
 	color: #fff;
+}
+
+@media screen and (max-width: 600px) {
+	.customtable th,
+	.customtable td {
+		padding: 5px;
+	}
 }

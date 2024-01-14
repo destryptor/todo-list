@@ -11,6 +11,7 @@
 	opacity: 0;
 	animation: fadeIn 0.5s ease-in-out forwards;
 }
+
 @keyframes fadeIn {
 	from {
 		opacity: 0;
@@ -43,21 +44,30 @@
 	opacity: 0;
 	animation: fadeIn 0.5s ease-in-out forwards;
 }
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-}
 
 .topbar p {
-	font-size: 45px;
+	font-size: 35px;
 	color: #e213d8;
 }
 
 .topbar button {
 	font-size: 20px;
 	padding: 5px 10px;
+	background-color: #222020;
+}
+
+.topbar button:hover {
+	background-color: #222020;
+	color: #e213d8;
+}
+
+@media screen and (max-width: 600px) {
+	.topbar p {
+		font-size: 20px;
+	}
+
+	.topbar button {
+		font-size: 16px;
+		padding: 5px 8px;
+	}
 }

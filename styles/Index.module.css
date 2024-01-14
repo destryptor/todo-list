@@ -18,11 +18,11 @@
 	padding: 0 20px;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	height: 100vh;
+	height: 90vh;
 	opacity: 0;
 	animation: fadeIn 0.5s ease-in-out forwards;
 }
+
 @keyframes fadeIn {
 	from {
 		opacity: 0;
@@ -39,4 +39,23 @@
 .button a {
 	padding: 20px;
 	margin: 0px;
+}
+
+@media screen and (max-width: 600px) {
+	.title {
+		font-size: 40px;
+	}
+
+	.body {
+		margin: 20px;
+		font-size: 30px;
+	}
+
+	.button {
+		font-size: 20px;
+	}
+
+	.button a {
+		padding: 10px;
+	}
 }

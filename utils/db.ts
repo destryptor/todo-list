@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const MONGO_URL = 'mongodb://localhost:27017/todo-list';
+const MONGO_URL = process.env.MONGO_URL;
 if (!MONGO_URL) {
 	throw new Error('Invalid URI');
 }

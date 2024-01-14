@@ -31,11 +31,13 @@ const LoginPage = () => {
 	const handleLoginInstead = () => {
 		setLoginState(true);
 		setSignupState(false);
+		setIncorrectSignup(false);
 	};
 
 	const handleSignupInstead = () => {
 		setSignupState(true);
 		setLoginState(false);
+		setIncorrectLogin(false);
 	};
 
 	const handleLogin = async () => {
@@ -88,23 +90,17 @@ const LoginPage = () => {
 					<h1>Login</h1>
 					<div className={`${styles.formcontainer} ${styles.form}`}>
 						<form className={styles.form}>
-							<label className={styles.inputlabel}>
-								Username:
-								<input type='text' value={loginData.username} placeholder='Username' onChange={(e) => setLoginData({ ...loginData, username: e.target.value })} />
-							</label>
-							<label className={styles.inputlabel}>
-								Password:
-								<input type='password' value={loginData.password} placeholder='Password' onChange={(e) => setLoginData({ ...loginData, password: e.target.value })} />
-							</label>
-							<button type='button' className={styles.button} onClick={handleLogin}>
-								Log in
-							</button>
-							<button type='button' className={styles.instead} onClick={handleSignupInstead}>
-								Sign up instead
-							</button>
+							<input type='text' className={styles.inputfield} value={loginData.username} placeholder='Username' onChange={(e) => setLoginData({ ...loginData, username: e.target.value })} />
+							<input type='password' className={styles.inputfield} value={loginData.password} placeholder='Password' onChange={(e) => setLoginData({ ...loginData, password: e.target.value })} />
 						</form>
 						<span className={styles.errormessage}>{incorrectLogin && 'Incorrect Username or Password'}</span>
 					</div>
+					<button type='button' className={styles.button} onClick={handleLogin}>
+						Log in
+					</button>
+					<button type='button' className={styles.instead} onClick={handleSignupInstead}>
+						Sign up instead
+					</button>
 				</div>
 			) : null}
 
@@ -113,27 +109,21 @@ const LoginPage = () => {
 					<h1>Login</h1>
 					<div className={`${styles.formcontainer} ${styles.form}`}>
 						<form className={styles.form}>
-							<label className={styles.inputlabel}>
-								Username:
-								<input type='text' value={signupData.username} placeholder='Username' onChange={(e) => setSignupData({ ...signupData, username: e.target.value })} />
-							</label>
-							<label className={styles.inputlabel}>
-								Password:
-								<input type='password' value={signupData.password} placeholder='Password' onChange={(e) => setSignupData({ ...signupData, password: e.target.value })} />
-							</label>
-							<label className={styles.inputlabel}>
-								Confirm Password:
-								<input type='password' value={signupData.confirmPassword} placeholder='Confirm Password' onChange={(e) => setSignupData({ ...signupData, confirmPassword: e.target.value })} />
-							</label>
-							<button type='button' className={styles.button} onClick={handleSignup}>
-								Sign up
-							</button>
-							<button type='button' className={styles.instead} onClick={handleLoginInstead}>
-								Log in instead
-							</button>
+							<input type='text' className={styles.inputfield} value={signupData.username} placeholder='Username' onChange={(e) => setSignupData({ ...signupData, username: e.target.value })} />
+
+							<input type='password' className={styles.inputfield} value={signupData.password} placeholder='Password' onChange={(e) => setSignupData({ ...signupData, password: e.target.value })} />
+
+							<input type='password' className={styles.inputfield} value={signupData.confirmPassword} placeholder='Confirm Password' onChange={(e) => setSignupData({ ...signupData, confirmPassword: e.target.value })} />
+
 							<span className={styles.errormessage}>{incorrectSignup && 'Please fill all the details'}</span>
 						</form>
 					</div>
+					<button type='button' className={styles.button} onClick={handleSignup}>
+						Sign up
+					</button>
+					<button type='button' className={styles.instead} onClick={handleLoginInstead}>
+						Log in instead
+					</button>
 				</div>
 			) : null}
 		</>

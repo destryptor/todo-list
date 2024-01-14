@@ -23,6 +23,7 @@
 
 .container h1 {
 	color: #ca10c1;
+	font-size: 50px;
 }
 
 .formcontainer {
@@ -36,29 +37,30 @@
 	align-items: center;
 }
 
-.inputlabel {
-	margin-bottom: 8px;
-}
-
 .inputfield {
 	width: 100%;
 	padding: 8px;
-	margin-bottom: 16px;
+	margin: 15px;
 	border: 1px solid #ddd;
 	border-radius: 4px;
+	box-sizing: border-box;
+	text-align: center;
 }
 
 .buttoncontainer {
 	display: flex;
+	flex-direction: row;
 	gap: 10px;
 }
 
 .button {
+	font-size: 20px;
 	padding: 10px 15px;
 	margin: 10px;
 }
 
 .instead {
+	font-size: 18px;
 	background-color: #0f0f0f;
 	padding: 10px 15px;
 	margin: 10px;
@@ -72,6 +74,7 @@
 .errormessage {
 	color: red;
 	margin-top: 10px;
+	text-align: center;
 }
 
 .transitionfade {
@@ -81,4 +84,14 @@
 
 .transitionfade.active {
 	opacity: 1;
+}
+
+@media screen and (max-width: 600px) {
+	.inputfield {
+		width: 100%;
+	}
+
+	.buttoncontainer {
+		flex-direction: row;
+	}
 }
