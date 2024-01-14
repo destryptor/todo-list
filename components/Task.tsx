@@ -10,15 +10,15 @@ const Task: React.FC<TaskProps> = ({ task, onRemoveTask }) => {
 	const [complete, setComplete] = useState(task.completed);
 	const isDeadlineExpired = new Date(task.deadline) < new Date();
 
-	const formatDate = (dateString) => {
-		const options = { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Kolkata' };
+	const formatDate = (dateString: string) => {
+		const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Kolkata' };
 		const date = new Date(dateString);
 		const localDate = date.toLocaleDateString('en-US', options);
 		return localDate;
 	};
 
-	const formatTime = (dateString) => {
-		const options = { hour: 'numeric', minute: 'numeric', timeZone: 'Asia/Kolkata' };
+	const formatTime = (dateString: string) => {
+		const options: Intl.DateTimeFormatOptions = { hour: 'numeric', minute: 'numeric', timeZone: 'Asia/Kolkata' };
 		const date = new Date(dateString);
 		const localTime = date.toLocaleTimeString('en-US', options);
 		return localTime;
@@ -54,8 +54,8 @@ const Task: React.FC<TaskProps> = ({ task, onRemoveTask }) => {
 				<input type='checkbox' checked={complete} onChange={handleCheckboxChange} />
 			</td>
 			<td>{task.task}</td>
-			<td>{formatTime(task.deadline)}</td>
-			<td>{formatDate(task.deadline)}</td>
+			<td>{formatTime(task.deadline.toString())}</td>
+			<td>{formatDate(task.deadline.toString())}</td>
 			<td>{complete ? 'Completed' : isDeadlineExpired ? 'Deadline Expired' : 'Pending'}</td>
 			<td>
 				<button style={{ padding: '10px' }} onClick={() => onRemoveTask(task._id)}>
