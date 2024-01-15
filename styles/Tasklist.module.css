@@ -33,7 +33,8 @@
 
 .tablecontainer {
 	width: 100%;
-	margin-top: 20px;
+	margin-top: 0px;
+	overflow-x: auto;
 	opacity: 0;
 	animation: fadeIn 0.5s ease-in-out forwards;
 }
@@ -48,6 +49,19 @@
 .customtable td {
 	padding: 20px;
 	border: 1px solid #ddd;
+	max-width: 50px;
+	box-sizing: border-box;
+	overflow-wrap: break-word;
+}
+
+.customtable button {
+	padding: 10px;
+	background-color: #0f0f0f;
+}
+
+.customtable button:hover {
+	background-color: #0f0f0f;
+	color: #e213d8;
 }
 
 .customtable th {
@@ -58,6 +72,13 @@
 @media screen and (max-width: 600px) {
 	.customtable th,
 	.customtable td {
-		padding: 5px;
+		max-width: 45px;
+		padding: 2px;
+		font-size: 12px;
+	}
+
+	.customtable button {
+		font-size: 12px;
+		padding: 2px;
 	}
 }

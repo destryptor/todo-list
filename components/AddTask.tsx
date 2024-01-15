@@ -46,11 +46,11 @@ const AddTask: React.FC<AddTaskProps> = ({ handleAddTask }) => {
 				<h2>Add Task</h2>
 			</div>
 			<div className={styles.container}>
-				Title :
+				<div style={{ padding: '10px', whiteSpace: 'nowrap' }}>Title :</div>
 				<div className={styles.inputcontainer}>
 					<input type='text' className={styles.input} value={newTask} onChange={handleInputChange} placeholder='Task Title' />
 				</div>
-				Deadline :
+				<div style={{ padding: '10px', whiteSpace: 'nowrap' }}>Deadline :</div>
 				<div className={styles.inputcontainer}>
 					<input type='datetime-local' className={styles.input} value={deadline} onChange={handleDeadlineChange} />
 				</div>

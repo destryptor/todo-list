@@ -58,9 +58,7 @@ const Task: React.FC<TaskProps> = ({ task, onRemoveTask }) => {
 			<td>{formatDate(task.deadline.toString())}</td>
 			<td>{complete ? 'Completed' : isDeadlineExpired ? 'Deadline Expired' : 'Pending'}</td>
 			<td>
-				<button style={{ padding: '10px' }} onClick={() => onRemoveTask(task._id)}>
-					Remove
-				</button>
+				<button onClick={() => onRemoveTask(task._id)}>Remove</button>
 			</td>
 		</tr>
 	);
