@@ -2,12 +2,14 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import TaskModel, { ITask } from '@/models/Task';
 import TaskList from '@/components/TaskList';
+import Loading from '@/components/Loading';
 
 import styles from '@/styles/Dashboard.module.css';
 
 const Dashboard = () => {
 	const { data: session } = useSession();
 	const [tasks, setTasks] = useState<ITask[]>([]);
+	const [isLoaded, setIsLoaded] = useState(false);
 
 	useEffect(() => {
 		const fetchTasks = async () => {
@@ -20,7 +22,9 @@ const Dashboard = () => {
 					body: JSON.stringify({ user: session.user.name }),
 				});
 				const taskData = await response.json();
+
 				setTasks(taskData);
+				setIsLoaded(true);
 			}
 		};
 
@@ -75,11 +79,17 @@ const Dashboard = () => {
 		<>
 			{session ? (
 				<>
-					<div className={styles.topbar}>
-						<p>Welcome, {session.user.name.charAt(0).toUpperCase() + session.user.name.slice(1)}!</p>
-						<button onClick={() => signOut()}>Sign out</button>
-					</div>
-					<TaskList tasks={tasks} onRemoveTask={handleRemoveTask} addTask={handleAddTask} />
+					{!isLoaded ? (
+						<Loading />
+					) : (
+						<>
+							<div className={styles.topbar}>
+								<p>Welcome, {session.user.name.charAt(0).toUpperCase() + session.user.name.slice(1)}!</p>
+								<button onClick={() => signOut()}>Sign out</button>
+							</div>
+							<TaskList tasks={tasks} onRemoveTask={handleRemoveTask} addTask={handleAddTask} />
+						</>
+					)}
 				</>
 			) : (
 				<>
