@@ -2,8 +2,8 @@ require('dotenv').config();
 
 const withPWA = require('@ducanh2912/next-pwa').default({
 	dest: 'public',
-	cacheOnFrontEndNAv: true,
-	aggresiveFrontEndNavCaching: true,
+	cacheOnFrontEndNav: true,
+	aggressiveFrontEndNavCaching: true,
 	reloadOnOnline: true,
 	swcMinify: true,
 	disable: false,
