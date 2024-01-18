@@ -8,7 +8,7 @@ This project uses **Next.js, REACT, Node.js, MongoDB and Typescript.** <br>
 - Allows users from anywhere in the world to maintain their own to-do lists with each task having its deadline in their local time. Tasks can be created, completed (checked) or removed.
 - Every task will show 'Pending', 'Completed' or 'Deadline Expired' depending upon its status.
 - The lists are persisted using MongoDB, hence the lists are maintained even when you close the app.
-- PWA (Progressive Web App) compatibility is present, which allows users to install the web-app on their devices and use it. Some future developments are planned regarding the PWA, which will be listed futher down below.
+- PWA (Progressive Web App) compatibility is present, which allows users to install the web-app on their devices and use it. Some future developments are planned regarding the PWA, which will be listed further down below.
 
 ## Instructions to use the app:
 
@@ -51,4 +51,8 @@ utils/
 The server can be run using `npm run dev`. The development server will run on [http://localhost:3000](http://localhost:3000).
 
 The server can be built for production using the command `npm run build` and the build can be run using `npm run start`.
+
+## Future developments
+
+Currently trying to implement a notification system for the app which will notify users once a task's deadline is closing in, for example, in 1 hour.
 
