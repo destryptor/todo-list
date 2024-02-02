@@ -49,7 +49,14 @@ const Dashboard = () => {
 
 			if (response.ok) {
 				const createdTask = await response.json();
-				setTasks([...tasks, createdTask]);
+
+				const updatedTasks = [...tasks, createdTask].map((task) => ({
+					...task,
+					deadline: new Date(task.deadline),
+				}));
+
+				updatedTasks.sort((a, b) => a.deadline.getTime() - b.deadline.getTime());
+				setTasks(updatedTasks);
 			} else {
 				console.error('Failed to create task');
 			}
