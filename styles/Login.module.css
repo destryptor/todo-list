@@ -1,14 +1,14 @@
 .container {
 	width: 100%;
 	max-width: 800px;
-	margin: 0 auto;
+	margin: auto;
 	padding: 20px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	height: 100vh;
 	opacity: 0;
+	height: 60vh;
 	animation: fadeIn 0.5s ease-in-out forwards;
 }
 

@@ -1,0 +1,78 @@
+.container {
+	animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.title {
+	margin: 20px 0 50px 0;
+	text-align: center;
+	font-size: 60px;
+	color: #ca10c1;
+}
+
+.card {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+}
+
+.imgcontainer img {
+	width: 300px;
+	height: 300px;
+	border-radius: 100%;
+	margin: 50px;
+}
+
+.content {
+	max-width: 50%;
+	font-size: 25px;
+}
+
+.indcontent {
+	background-color: #252424;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 10px;
+	transition: 0.5s;
+}
+
+.indcontent:hover {
+	background-color: #161616;
+}
+
+@media screen and (max-width: 700px) {
+	.card {
+		flex-direction: column;
+	}
+	.title {
+		margin: 20px 0 30px 0;
+		font-size: 40px;
+	}
+	.body {
+		margin: 20px;
+		font-size: 30px;
+	}
+	.imgcontainer img {
+		width: 200px;
+		height: 200px;
+		margin: 20px;
+	}
+	.content {
+		max-width: 85%;
+		font-size: 20px;
+		margin-bottom: 50px;
+	}
+
+	.indcontent {
+		font-size: 17px;
+	}
+}

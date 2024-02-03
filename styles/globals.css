@@ -14,8 +14,19 @@
 }
 
 body {
+	margin: 0;
 	background-color: var(--background-color);
 	color: var(--text-color);
+}
+
+div#page-container {
+	position: relative;
+	top: 0px;
+	min-height: 100vh;
+}
+
+div#content-wrap {
+	padding: 0 0 70px 0;
 }
 
 button {
@@ -40,4 +51,177 @@ button:hover {
 	color: var(--text-color);
 	border-radius: 5px;
 	cursor: pointer;
+}
+
+.navbar-full h1 {
+	margin-left: 16px;
+}
+
+.navbar-full {
+	background-color: #272427;
+	color: #aa12b8;
+}
+
+.navbar-full ul {
+	list-style-type: none;
+	background-color: var(--shadow-gray);
+	overflow: hidden;
+	display: flex;
+	width: 100%;
+	align-items: center;
+}
+
+.navbar-container {
+	display: inline-flex;
+	flex: 1;
+}
+
+.navbar-full li {
+	float: left;
+}
+
+.navbar-full li a,
+.dropbtn {
+	display: block;
+	padding: 10px 16px;
+	margin-top: 5px;
+	color: var(--off-white);
+	text-decoration: none;
+	font-weight: 500;
+	transition: 0.5s;
+}
+
+.navbar-full li a:hover:not(.active-page, .nohover),
+#dropdown:hover .dropbtn {
+	background-color: var(--abyss);
+}
+
+.navbar-full li #dropdown {
+	display: inline-block;
+}
+
+.dropdown-content {
+	position: absolute;
+	right: 0px;
+	background-color: #272427;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgb(54, 54, 54);
+	z-index: 30;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.4s ease;
+}
+
+.dropdown-content a {
+	color: var(--white);
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+	font-weight: 500;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.dropdown-content.open {
+	max-height: 200px;
+}
+
+.dropdown-content.open a {
+	opacity: 1;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: #aa12b8;
+	height: 70px;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+#footer-name {
+	position: absolute;
+	left: 20px;
+	font-weight: bold;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	height: 70px;
+}
+
+a.social-link {
+	align-self: center;
+}
+
+img.social-icon {
+	margin: 17px 10px;
+	vertical-align: middle;
+	border-radius: 2px;
+	width: 36px;
+	transition: transform 0.2s;
+	display: inline-flex;
+}
+
+img.social-icon:hover {
+	transform: scale(1.2);
+}
+
+.social-link {
+	text-decoration: none;
+}
+
+.icon {
+	color: #6d1675;
+	margin-right: 7px;
+	transition: 0.3s ease-in-out;
+}
+
+.social-link:hover > .icon {
+	color: #4d1652;
+	transform: scale(1.166);
+}
+
+div#contact-me {
+	text-align: center;
+	height: 70px;
+	display: inline-flex;
+	align-items: center;
+	margin-right: 10px;
+	font-weight: bold;
+}
+
+@media (max-width: 400px) {
+	footer {
+		justify-content: space-evenly;
+	}
+	img#github {
+		margin-right: 10px;
+	}
+}
+
+@media (max-width: 450px) {
+	div#contact-us {
+		display: none;
+	}
+}
+
+@media (max-width: 600px) {
+	#footer-name {
+		display: none;
+	}
+
+	#contact-me {
+		margin-right: auto !important;
+		margin-left: 10px !important;
+		display: flex !important;
+		align-items: center !important;
+	}
+}
+
+span.float-middle {
+	vertical-align: middle;
+	display: inline-flex;
 }
