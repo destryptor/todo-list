@@ -120,7 +120,11 @@ button:hover {
 	text-align: left;
 	font-weight: 500;
 	opacity: 0;
-	transition: opacity 0.3s ease;
+	transition: background-color 0.5s ease-in;
+}
+
+.item:hover {
+	background-color: #1b1a1b;
 }
 
 .dropdown-content.open {

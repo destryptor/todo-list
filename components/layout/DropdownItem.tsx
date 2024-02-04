@@ -9,7 +9,7 @@ interface DropdownItemProps {
 
 const DropdownItem: React.FC<DropdownItemProps> = ({ label, link, onClick }) => {
 	return (
-		<Link href={link} onClick={onClick}>
+		<Link href={link} onClick={onClick} className='item'>
 			{label}
 		</Link>
 	);
