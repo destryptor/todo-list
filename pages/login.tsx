@@ -17,6 +17,7 @@ const LoginPage = () => {
 	});
 	const [incorrectLogin, setIncorrectLogin] = useState(false);
 	const [incorrectSignup, setIncorrectSignup] = useState(false);
+	const [errorCode, setErrorCode] = useState(0);
 
 	const handleLoginState = () => {
 		setLoginState(true);
@@ -50,8 +51,30 @@ const LoginPage = () => {
 	};
 
 	const handleSignup = async () => {
+		const isUsernameUnique = await checkUsernameUniqueness(signupData.username);
+		if (!isUsernameUnique) {
+			setErrorCode(501);
+			return;
+		}
+
+		if (signupData.username.length < 4) {
+			setErrorCode(502);
+			return;
+		}
+
+		if (signupData.password.length < 8) {
+			setErrorCode(503);
+			return;
+		}
+
+		const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+		if (!regex.test(signupData.password)) {
+			setErrorCode(504);
+			return;
+		}
+
 		if (signupData.password !== signupData.confirmPassword) {
-			alert('Password and Confirm Password do not match');
+			setErrorCode(505);
 			return;
 		}
 
@@ -66,6 +89,22 @@ const LoginPage = () => {
 			router.push('/dashboard');
 		} else {
 			setIncorrectSignup(true);
+		}
+	};
+
+	const checkUsernameUniqueness = async (username: string) => {
+		try {
+			const response = await fetch('/api/validation', {
+				method: 'POST',
+				body: JSON.stringify({ username }),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
+			if (!response.ok) return false;
+			else return true;
+		} catch (error) {
+			console.error('Error:', error);
 		}
 	};
 
@@ -114,9 +153,15 @@ const LoginPage = () => {
 							<input type='password' className={styles.inputfield} value={signupData.password} placeholder='Password' onChange={(e) => setSignupData({ ...signupData, password: e.target.value })} />
 
 							<input type='password' className={styles.inputfield} value={signupData.confirmPassword} placeholder='Confirm Password' onChange={(e) => setSignupData({ ...signupData, confirmPassword: e.target.value })} />
-
-							<span className={styles.errormessage}>{incorrectSignup && 'Please fill all the details'}</span>
 						</form>
+						<span className={styles.errormessage}>
+							{incorrectSignup && 'Please fill all the details'}
+							{errorCode === 501 && 'Username already in use'}
+							{errorCode === 502 && 'Username must be atleast 4 characters long'}
+							{errorCode === 503 && 'Password must be atleast 8 characters long'}
+							{errorCode === 504 && 'Password must have atleast 1 number and 1 special character'}
+							{errorCode === 505 && 'Passwords do not match'}
+						</span>
 					</div>
 					<button type='button' className={styles.button} onClick={handleSignup}>
 						Sign up
