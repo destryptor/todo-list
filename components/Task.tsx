@@ -11,14 +11,14 @@ const Task: React.FC<TaskProps> = ({ task, onRemoveTask }) => {
 	const isDeadlineExpired = new Date(task.deadline) < new Date();
 
 	const formatDate = (dateString: string) => {
-		const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Kolkata' };
+		const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
 		const date = new Date(dateString);
 		const localDate = date.toLocaleDateString('en-US', options);
 		return localDate;
 	};
 
 	const formatTime = (dateString: string) => {
-		const options: Intl.DateTimeFormatOptions = { hour: 'numeric', minute: 'numeric', timeZone: 'Asia/Kolkata' };
+		const options: Intl.DateTimeFormatOptions = { hour: 'numeric', minute: 'numeric' };
 		const date = new Date(dateString);
 		const localTime = date.toLocaleTimeString('en-US', options);
 		return localTime;
