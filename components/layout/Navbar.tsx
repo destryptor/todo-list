@@ -12,7 +12,11 @@ const Navbar = () => {
 		<nav>
 			<div className='navbar-full'>
 				<ul>
-					<h1>TODO List App</h1>
+					<h1>
+						<Link href={'/'} style={{ textDecoration: 'none', color: '#ca10c1' }}>
+							TODO List App
+						</Link>
+					</h1>
 					<div className='navbar-container'></div>
 					<Dropdown links={dropdownLinks} />
 				</ul>

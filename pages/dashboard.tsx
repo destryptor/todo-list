@@ -91,7 +91,7 @@ const Dashboard = () => {
 					) : (
 						<>
 							<div className={styles.topbar}>
-								<p>Welcome, {session.user.name.charAt(0).toUpperCase() + session.user.name.slice(1)}!</p>
+								<p>Welcome, {session.user.name}!</p>
 								<button onClick={() => signOut()}>Sign out</button>
 							</div>
 							<TaskList tasks={tasks} onRemoveTask={handleRemoveTask} addTask={handleAddTask} />
